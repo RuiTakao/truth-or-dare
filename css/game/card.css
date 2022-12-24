@@ -1,0 +1,279 @@
+/*********************************
+	カードリストのデザイン
+*********************************/
+
+/******** カードのレイアウト **********/
+#card-list {
+    position: absolute;
+    max-width: 360px;
+    width: 100%;
+    margin: 16px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/******** カードのデザイン **********/
+.card {
+    width: calc(100% / 4 - 12px);
+    aspect-ratio: 3 / 4;
+    background: orange;
+    margin: 6px;
+    list-style: none;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    position: relative;
+}
+
+.card:last-child {
+    margin-left: auto;
+}
+
+/******** アニメーション中はカードを触れないようにする設定 **********/
+.card.lock {
+    pointer-events: none;
+    cursor: default;
+}
+
+/******** カードのアニメーションの設定 **********/
+/******** アニメーション前はカード透明 **********/
+.card.hide {
+    opacity: 0;
+}
+
+#card4.moving,
+#card8.moving,
+#card12.moving,
+#card13.moving {
+    opacity: 0;
+    transform: translateX(-360px);
+}
+
+#card4.moving {
+    animation: moving_card_long .5s forwards;
+}
+
+#card8.moving {
+    animation: moving_card_long .5s .2s forwards;
+}
+
+#card12.moving {
+    animation: moving_card_long .5s .4s forwards;
+}
+
+#card13.moving {
+    animation: moving_card_long .5s .6s forwards;
+}
+
+#card3.moving,
+#card7.moving,
+#card11.moving {
+    opacity: 0;
+    transform: translateX(-270px);
+}
+
+#card3.moving {
+    animation: moving_card_middle .5s .8s forwards;
+}
+
+#card7.moving {
+    animation: moving_card_middle .5s 1s forwards;
+}
+
+#card11.moving {
+    animation: moving_card_middle .5s 1.2s forwards;
+}
+
+#card2.moving,
+#card6.moving,
+#card10.moving {
+    opacity: 0;
+    transform: translateX(-180px);
+}
+
+#card2.moving {
+    animation: moving_card_short .5s 1.4s forwards;
+}
+
+#card6.moving {
+    animation: moving_card_short .5s 1.6s forwards;
+}
+
+#card10.moving {
+    animation: moving_card_short .5s 1.8s forwards;
+}
+
+#card1.moving,
+#card5.moving,
+#card9.moving {
+    opacity: 0;
+    transform: translateX(-90px);
+}
+
+#card1.moving {
+    animation: moving_card_very_short .5s 2s forwards;
+}
+#card5.moving {
+    animation: moving_card_very_short .5s 2.2s forwards;
+}
+#card9.moving {
+    animation: moving_card_very_short .5s 2.4s forwards;
+}
+
+@keyframes moving_card_long {
+    from {
+        transform: translateX(-360px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moving_card_middle {
+    from {
+        transform: translateX(-270px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moving_card_short {
+    from {
+        transform: translateX(-180px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moving_card_very_short {
+    from {
+        transform: translateX(-90px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/*********************************
+	カードがクリックされた時の設定
+*********************************/
+.card.marking {
+    background: blue;
+    transform: scale(1.1);
+    pointer-events: none;
+}
+
+/*********************************
+	「はい」がクリックされた時の設定
+*********************************/
+.card.selected {
+    position: relative;
+    background: #808080;
+    transform: scale(1);
+    pointer-events: none;
+}
+
+.card.selected .name{
+    font-weight: bold;
+    color: orange;
+    position: absolute;
+    bottom: 6px;
+    width: 100%;
+    text-align: center;
+}
+
+.card.selected .check {
+    position: absolute;
+    width: 32px;
+    height: 54px;
+    background: transparent;
+    border-right: 12px solid orange;
+    border-bottom: 12px solid orange;
+    top: 36%;
+    left: 53%;
+    transform: translate(-50%, -50%) rotateY(0) rotateZ(40deg);
+}
+
+/*********************************
+	カードのひっくり返った時のデザイン
+*********************************/
+.card .num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    opacity: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #808080;
+}
+
+/*********************************
+	カードがひっくり返る設定
+*********************************/
+.card.result {
+    animation: turn .5s forwards;
+}
+
+.card.result .name {
+    animation: turn_name .5s forwards;
+}
+
+.card.result .check {
+    animation: turn_check .25s forwards;
+}
+
+.card.result .num {
+    animation: turn_num .5s forwards;
+}
+
+@keyframes turn {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(180deg);
+        background: #fff;
+        box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, .3);
+    }
+}
+
+@keyframes turn_name {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes turn_check {
+    from {
+        transform: translate(-50%, -50%) rotateY(0) rotateZ(40deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotateY(90deg) rotateZ(40deg);
+    }
+}
+
+@keyframes turn_num {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

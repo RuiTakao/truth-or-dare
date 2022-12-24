@@ -1,0 +1,99 @@
+/*********************************
+	白い帯のデザイン
+*********************************/
+#label {
+    position: absolute;
+    max-width: 768px;
+    width: 100%;
+    background: #fff;
+    height: 100px;
+    top: 360px;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.first_label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+}
+
+.second_label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+}
+
+#label.fadeIn {
+    animation-name: game-start-label_fadeIn;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+#label.fadeOut {
+    animation: game-start-label_fadeOut .5s forwards;
+}
+
+@keyframes game-start-label_fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes game-start-label_fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.first_label.slideLeftShow {
+    animation: game-start-label_slideLeftShow 1s forwards;
+}
+
+.first_label.slideLeftHide {
+    animation: game-start-label_slideLeftHide 1s forwards;
+}
+
+.second_label.slideLeftShow {
+    animation: game-start-label_slideLeftShow 1s forwards;
+}
+
+.second_label.slideLeftHide {
+    animation: game-start-label_slideLeftHide 1s forwards;
+}
+
+@keyframes game-start-label_slideLeftHide {
+    from {
+        opacity: 1;
+        left: 50%;
+    }
+    to {
+        opacity: 0;
+        left: 0;
+    }
+}
+
+@keyframes game-start-label_slideLeftShow {
+    from {
+        opacity: 0;
+        left: 100%;
+    }
+    to {
+        opacity: 1;
+        left: 50%;
+    }
+}

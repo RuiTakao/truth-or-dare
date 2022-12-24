@@ -1,0 +1,32 @@
+#result_modal {
+    background: #fff;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+#win_player_name {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 24px;
+    text-shadow: 2px 2px 8px #888888;
+}
+
+#result_modal.show {
+    animation: show_modal 1s forwards;
+}
+
+@keyframes show_modal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: .8;
+    }
+}

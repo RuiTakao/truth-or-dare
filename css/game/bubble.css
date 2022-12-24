@@ -1,0 +1,140 @@
+/*********************************
+	吹き出し本体のデザイン
+*********************************/
+#bubble {
+    position: relative;
+    width: 320px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 24px;
+    opacity: 0;
+}
+
+/*********************************
+	吹き出しのデザイン
+*********************************/
+
+/******** 吹き出し背景のデザイン **********/
+.bubble_bg {
+    width: 320px;
+    height: 130px;
+    position: absolute;
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, .3);
+    z-index: 3;
+}
+
+/******** 吹き出し矢印のデザイン **********/
+.bubble_arrow {
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-left: 24px solid #fff;
+    border-bottom: 25px solid transparent;
+    bottom: 0;
+    left: 180px;
+    z-index: 4;
+}
+
+/******** 吹き出し矢印の影のデザイン **********/
+.bubble_arrow_shadow {
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-left: 24px solid rgba(0, 0, 0, .3);
+    border-bottom: 25px solid transparent;
+    bottom: -5px;
+    left: 185px;
+    filter: blur(3px);
+    z-index: 1;
+}
+
+/*********************************
+	テキストのデザイン
+*********************************/
+#bubble_text {
+    position: absolute;
+    text-align: center;
+    line-height: 2em;
+    width: 100%;
+    z-index: 4;
+    top: 43%;
+    transform: translateY(-50%);
+}
+
+#bubble_text.btn_exist {
+    top: 19%;
+}
+
+/*********************************
+	ボタンのデザイン
+*********************************/
+
+/******** ボタンの位置決め **********/
+#bubble_btn {
+    position: absolute;
+    z-index: 4;
+    justify-content: space-between;
+    width: 258px;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/******** ボタンのデザイン **********/
+#yes,
+#no {
+    width: 120px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border-radius: 20px;
+    font-weight: bold;
+    z-index: 4;
+    cursor: pointer;
+}
+
+/******** 「はい」ボタンの背景色 **********/
+#yes {
+    background: rgb(233, 99, 248);
+}
+
+/******** 「いいえ」ボタンの背景色 **********/
+#no {
+    background: rgb(28, 236, 236);
+}
+
+#yes.lock,
+#no.lock {
+    pointer-events: none;
+    cursor: default;
+}
+
+/*********************************
+	吹き出しのアニメーション設定
+*********************************/
+
+/******** 吹き出しのアニメーションの設定 **********/
+#bubble.fadeIn {
+    animation: declare_bubble_fadeIn 2s forwards;
+}
+
+@keyframes declare_bubble_fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*********************************
+	カードがクリックされた時の設定
+*********************************/
+#bubble.rightRotate {
+    transform: rotate(-2deg);
+}
+
+#bubble.leftRotate {
+    transform: rotate(2deg);
+}
